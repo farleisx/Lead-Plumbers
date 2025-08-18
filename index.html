@@ -3,221 +3,181 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>אינסטלטור מקצועי</title>
-  <link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&display=swap" rel="stylesheet">
+  <title>תרמוטק אינסטלציה</title>
   <style>
-    /* ==============================
-       Global Styles
-    ============================== */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Alef', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
-    h1, h2, h3 { color: #0b3d91; }
-    a { text-decoration: none; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    /* Global Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #3e2723; /* Deep brown */
+    }
+    h3 {
+      color: #6d4c41; /* Medium brown */
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin: 10px 0;
+    }
+    a {
+      text-decoration: none;
+      color: #d32f2f; /* Red */
+    }
+    a:hover {
+      text-decoration: underline;
+    }
 
-    /* ==============================
-       Hero Section
-    ============================== */
+    /* Hero Section */
     .hero {
+      background: linear-gradient(to right, #3e2723, #6d4c41);
+      color: white;
+      padding: 50px 20px;
+      text-align: center;
+    }
+    .hero img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    /* Services Section */
+    .services {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      align-items: center;
-      background: #ffffff;
-      padding: 60px 20px;
-      gap: 40px;
-      text-align: right;
+      padding: 20px;
     }
-    .hero-text { flex: 1 1 400px; }
-    .hero-text h1 { font-size: 2.8rem; margin-bottom: 20px; }
-    .hero-text p { font-size: 1.5rem; margin-bottom: 20px; }
-    .services-list { list-style: none; }
-    .services-list li::before {
-      content: "✔️";
-      margin-left: 10px;
-      color: #ff0000;
+    .service {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin: 10px;
+      padding: 20px;
+      width: 250px;
+      text-align: center;
     }
-    .hero-image { flex: 1 1 400px; display: flex; justify-content: center; }
-    .hero-image img { max-width: 100%; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
-
-    /* ==============================
-       Contact Form Section
-    ============================== */
-    .contact {
-      background: #ffffff;
-      padding: 60px 20px;
-      text-align: right;
-    }
-    .contact h2 { font-size: 2rem; margin-bottom: 30px; text-align: center; }
-    .contact form {
-      max-width: 500px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-    .contact input, .contact select, .contact button {
-      padding: 15px;
-      font-size: 1rem;
-      border-radius: 10px;
-      border: 1px solid #ccc;
+    .service img {
       width: 100%;
+      height: auto;
+      border-radius: 8px;
     }
-    .contact button {
-      background: #ff0000;
-      color: #fff;
-      border: none;
-      font-weight: bold;
+
+    /* Contact Form */
+    .contact-form {
+      background-color: #fff;
+      padding: 20px;
+      margin: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .contact-form input, .contact-form select, .contact-form button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .contact-form button {
+      background-color: #d32f2f;
+      color: white;
       cursor: pointer;
-      transition: all 0.3s ease;
     }
-    .contact button:hover {
-      background: #cc0000;
-      transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    .contact-form button:hover {
+      background-color: #c62828;
     }
 
-    /* ==============================
-       Image Gallery Section
-    ============================== */
+    /* Gallery */
     .gallery {
-      padding: 60px 20px;
-      text-align: right;
-      background: #f9f9f9;
-    }
-    .gallery h2 { font-size: 2rem; margin-bottom: 30px; text-align: center; }
-    .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 20px;
+      padding: 20px;
     }
-    .gallery-grid img {
+    .gallery img {
       width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(20px);
       transition: opacity 0.5s ease, transform 0.5s ease;
     }
-    .gallery-grid img.fade-in {
+    .gallery img.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* ==============================
-       Footer
-    ============================== */
+    /* Footer */
     footer {
-      background: #0b3d91;
-      color: #ffffff;
+      background-color: #3e2723;
+      color: white;
       text-align: center;
-      padding: 30px 20px;
-      margin-top: 40px;
-    }
-
-    /* ==============================
-       Responsive
-    ============================== */
-    @media (max-width: 768px) {
-      .hero { flex-direction: column; text-align: center; }
-      .hero-text h1 { font-size: 2rem; }
-      .hero-text p { font-size: 1.2rem; }
-      .contact h2 { font-size: 1.5rem; }
+      padding: 10px;
     }
   </style>
 </head>
 <body>
 
-  <!-- ==============================
-       Hero Section
-  ============================== -->
-  <section class="hero container">
-    <div class="hero-text">
-      <h1>אינסטלטור מקצועי:</h1>
-      <p>פותרים כל תקלה – בלי לשבור קירות!</p>
-      <ul class="services-list">
-        <li>תיקון נזילות</li>
-        <li>החלפת צנרת</li>
-        <li>פתיחת סתימות</li>
-        <li>שירותי חירום</li>
-      </ul>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>אינסטלור מקצועי</h1>
+    <h2>פותרים כל תקלה – בלי לשבור קירות!</h2>
+    <img src="https://plus.unsplash.com/premium_photo-1664301972519-506636f0245d?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGx1bWJpbmd8ZW58MHx8MHx8fDA%3D" alt="Plumber fixing a faucet">
+    <p>תיקון נזילות, החלפת צנרת – במהירות, פתיחת סתימות, באחריות ובדיוק!</p>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services">
+    <h3>השירותים שלנו</h3>
+    <div class="service">
+      <img src="https://plus.unsplash.com/premium_photo-1664301972519-506636f0245d?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGx1bWJpbmd8ZW58MHx8MHx8fDA%3D" alt="Leak Repair">
+      <h4>תיקון נזילות</h4>
+      <p>תיקון נזילות מהירות בקירות, ריצוף ותקרה.</p>
     </div>
-    <div class="hero-image">
-      <img src="https://via.placeholder.com/500x400?text=Plumber+Image" alt="Plumber">
+    <div class="service">
+      <img src="https://plus.unsplash.com/premium_photo-1664301972519-506636f0245d?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGx1bWJpbmd8ZW58MHx8MHx8fDA%3D" alt="Pipe Replacement">
+      <h4>החלפת צנרת</h4>
+      <p>החלפת קווי מים וביוב ללא שבירת ריצוף.</p>
+    </div>
+    <div class="service">
+      <img src="https://plus.unsplash.com/premium_photo-1664301972519-506636f0245d?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGx1bWJpbmd8ZW58MHx8MHx8fDA%3D" alt="Drain Unclogging">
+      <h4>פתיחת סתימות</h4>
+      <p>פתיחת סתימות בלחץ מים גבוה, ספירלות חשמליות וציוד חדיש.</p>
     </div>
   </section>
 
-  <!-- ==============================
-       Contact Form Section
-  ============================== -->
-  <section class="contact container">
-    <h2>השאירו פרטים, נחזור אליכם עם פתרון מהיר:</h2>
-    <form>
-      <input type="text" placeholder="שם מלא" required>
-      <input type="tel" placeholder="מספר טלפון" required>
-      <select required>
-        <option value="">בחר שירות</option>
-        <option>תיקון נזילה</option>
-        <option>החלפת צנרת</option>
-        <option>פתיחת סתימה</option>
-        <option>שירות חירום</option>
+  <!-- Contact Form Section -->
+  <section class="contact-form">
+    <h3>השאירו פרטים, נחזור אליכם עם פתרון מהיר:</h3>
+    <form action="#" method="POST">
+      <input type="text" name="full_name" placeholder="שם מלא" required>
+      <input type="tel" name="phone_number" placeholder="מספר טלפון" required>
+      <select name="service" required>
+        <option value="pipe_replacement">החלפת צנרת</option>
+        <option value="leak_detection">איתור נזילות</option>
+        <option value="drain_unclogging">פתיחת סתימות</option>
       </select>
       <button type="submit">שלח</button>
     </form>
   </section>
 
-  <!-- ==============================
-       Image Gallery Section
-  ============================== -->
-  <section class="gallery container">
-    <h2>גלריית תמונות</h2>
-    <div class="gallery-grid">
-      <img src="https://via.placeholder.com/400x300?text=Image1" alt="Gallery Image">
-      <img src="https://via.placeholder.com/400x300?text=Image2" alt="Gallery Image">
-      <img src="https://via.placeholder.com/400x300?text=Image3" alt="Gallery Image">
-      <img src="https://via.placeholder.com/400x300?text=Image4" alt="Gallery Image">
-      <img src="https://via.placeholder.com/400x300?text=Image5" alt="Gallery Image">
-      <img src="https://via.placeholder.com/400x300?text=Image6" alt="Gallery Image">
-    </div>
-  </section>
-
-  <!-- ==============================
-       Footer
-  ============================== -->
-  <footer>
-    <p>© 2025 כל הזכויות שמורות</p>
-  </footer>
-
-  <!-- ==============================
-       JavaScript for Fade-In Gallery
-  ============================== -->
-  <script>
-    // Select all gallery images
-    const galleryImages = document.querySelectorAll('.gallery-grid img');
-
-    // Intersection Observer options
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.2
-    };
-
-    // Callback function for observer
-    const observerCallback = (entries, observer) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('fade-in');
-          observer.unobserve(entry.target); // Stop observing once visible
-        }
-      });
-    };
-
-    // Create observer
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-    // Observe each image
-    galleryImages.forEach(img => observer.observe(img));
-  </script>
-
-</body>
-</html>
+  <!-- Gallery Section -->
+  <section class="gallery">
+    <h3>גלריית תמונות</h3>
+    <img src="https://plus.unsplash.com/premium_photo-1664301972519-506636f0245d?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGx1bWJpbmd8ZW58MHx8MHx8fDA%3D" alt="Plumber fixing sink">
+    <img src="https://plus.unsplash.com/premium_photo-1664301972519-506636f0245d?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGx1bWJpbmd8ZW58MHx8MHx8fDA%3D" alt="Pipe installation">
+    <img src="https://plus.unsplash.com/premium_photo-1664301972519-506636f0245d?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGx1bWJpbmd8ZW58MHx8MHx8fDA%3D" alt="Drain cleaning">
+    <img src="https://plus.unsplash.com/premium_photo-1664301972519-506636f0245d?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGx1bWJpbmd8ZW58MHx8MHx8fDA%3D" alt="Leak detection">
+    <img src="https://plus.unsplash.com/premium_photo-1664301972519-506636f0245d?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGx1bWJpbmd8ZW58MHx8MHx8fDA%3D" alt="Bathroom renovation">
+    <img src="https://plus.unsplash.com/premium_photo-1664301972519-506636f0245d?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.
+::contentReference[oaicite:0]{index=0}
+ 
