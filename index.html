@@ -78,7 +78,6 @@
     <button type="button" id="verifyBtn">אמת קוד</button>
   </div>
   <p id="smsMsg" style="text-align:center; color:red; display:none;">קוד שגוי, נסה שוב</p>
-
   <p id="successMsg" style="text-align:center; color:green; display:none;">תודה! הפנינו את פרטיך.</p>
   <p class="disclaimer">כל ליד הוא לקוח פוטנציאלי שפנה אלינו. אין אנו יכולים להבטיח שהוא ירכוש שירות, אך הוא מביע עניין אמיתי.</p>
 </section>
@@ -107,34 +106,46 @@ const observer = new IntersectionObserver(entries => {
 galleryImgs.forEach(img => observer.observe(img));
 
 // Lead form + SMS verification
-const verifyBtn = document.getElementById('verifyBtn');
+const form = document.getElementById('leadForm');
 const smsDiv = document.getElementById('smsVerification');
 const smsCodeInput = document.getElementById('smsCode');
+const verifyBtn = document.getElementById('verifyBtn');
 const smsMsg = document.getElementById('smsMsg');
 const successMsg = document.getElementById('successMsg');
+
 let generatedCode = "";
 
-const form = document.getElementById('leadForm');
+// Step 1: Generate code when form submitted
 form.addEventListener('submit', e => {
   e.preventDefault();
   generatedCode = Math.floor(1000 + Math.random() * 9000).toString();
   alert("קוד אימות נשלח לטלפון שלך: " + generatedCode); // Replace with real SMS API
   smsDiv.style.display = "block";
+  console.log("Generated SMS code:", generatedCode);
 });
 
+// Step 2: Verify code and send lead
 verifyBtn.addEventListener('click', () => {
+  console.log("Verify button clicked");
+  console.log("Entered code:", smsCodeInput.value);
+  console.log("Generated code:", generatedCode);
+
   if(smsCodeInput.value === generatedCode){
+    console.log("Code correct, sending lead...");
     const data = {
       name: form.name.value,
       phone: form.phone.value,
       service: form.service.value
     };
-    fetch("https://script.google.com/macros/s/AKfycbxmapLv8rdcLukoDBFXX7J7A8ahL5uux-owA5sK5ptKu4jRqxdIJu6_VPreaYConoCS/exec", { // Replace with your Google Script URL
+    console.log("Data to send:", data);
+
+    fetch("https://script.google.com/macros/s/AKfycbxwZ9eAwsxa_MxIz1Q_XSTUi-YzVWQA4ouAYcu13I6WK9V25JIvn-rR296D3QBf3AAs/exec", {
       method: "POST",
       body: JSON.stringify(data)
     })
     .then(res => res.json())
     .then(res => {
+      console.log("Response from script:", res);
       if(res.result === "success"){
         successMsg.style.display = "block";
         form.reset();
@@ -142,8 +153,11 @@ verifyBtn.addEventListener('click', () => {
         smsCodeInput.value = "";
         smsMsg.style.display = "none";
       }
-    }).catch(err => alert("שגיאה בשליחת הנתונים"));
+    })
+    .catch(err => console.error("Fetch error:", err));
+
   } else {
+    console.log("Wrong code");
     smsMsg.style.display = "block";
   }
 });
