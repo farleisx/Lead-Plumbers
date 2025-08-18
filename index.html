@@ -4,85 +4,124 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>אינסטלטור בתל אביב</title>
+  <link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f9f9f9;
-      color: #333;
-      direction: rtl;
-    }
+    /* Global */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Alef', sans-serif; background: #f9f9f9; color: #333; }
+    a { text-decoration: none; }
+
+    /* Hero Section */
     header {
-      background: #0077b6;
+      background: linear-gradient(135deg, #0b3d91, #f5c518);
       color: white;
-      padding: 20px;
       text-align: center;
+      padding: 60px 20px 40px 20px;
     }
     header h1 {
-      margin: 0;
       font-size: 28px;
+      margin-bottom: 10px;
     }
     header p {
-      margin: 5px 0 0;
       font-size: 18px;
+      margin-bottom: 20px;
     }
-    .cta {
-      display: block;
-      background: #ff6b6b;
-      color: white;
-      text-decoration: none;
-      padding: 15px 20px;
-      margin: 20px auto;
-      text-align: center;
-      border-radius: 8px;
+    .hero-cta {
+      display: inline-block;
+      background: #ffd700;
+      color: #0b3d91;
+      padding: 15px 30px;
+      border-radius: 50px;
       font-size: 20px;
-      max-width: 300px;
+      font-weight: bold;
+      transition: all 0.3s ease;
     }
+    .hero-cta:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    /* Form Section */
     .form-container {
-      background: white;
       max-width: 500px;
-      margin: 30px auto;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+      margin: -40px auto 40px;
+      background: white;
+      padding: 30px 20px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     }
     .form-container h2 {
-      margin-top: 0;
       text-align: center;
+      margin-bottom: 20px;
+      font-size: 22px;
+      color: #0b3d91;
     }
     form input, form select, form button {
       width: 100%;
-      padding: 12px;
+      padding: 15px;
       margin: 10px 0;
+      border-radius: 10px;
       border: 1px solid #ccc;
-      border-radius: 6px;
       font-size: 16px;
     }
     form button {
-      background: #0077b6;
-      color: white;
+      background: #0b3d91;
+      color: #ffd700;
       border: none;
       cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
     }
     form button:hover {
-      background: #005f87;
+      background: #ffd700;
+      color: #0b3d91;
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
+
+    /* Trust Section */
     .trust {
-      max-width: 600px;
+      max-width: 700px;
       margin: 40px auto;
       text-align: center;
     }
     .trust p {
       font-size: 18px;
-      margin: 8px 0;
+      margin: 10px 0;
     }
-    footer {
-      background: #333;
-      color: white;
+
+    /* Testimonials */
+    .testimonials {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 0 20px;
       text-align: center;
-      padding: 15px;
+    }
+    .testimonial {
+      background: #ffffff;
+      padding: 20px;
+      margin: 10px 0;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      font-style: italic;
+    }
+
+    /* Footer */
+    footer {
+      background: #0b3d91;
+      color: #ffd700;
+      text-align: center;
+      padding: 20px;
       margin-top: 40px;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header h1 { font-size: 24px; }
+      header p { font-size: 16px; }
+      .hero-cta { font-size: 18px; padding: 12px 25px; }
+      form input, form select, form button { padding: 12px; font-size: 14px; }
+      .form-container { margin: -30px 10px 30px; padding: 20px; }
     }
   </style>
 </head>
@@ -91,9 +130,8 @@
 <header>
   <h1>🚰 צריכים אינסטלטור בתל אביב?</h1>
   <p>שירות מהיר, אמין וזמין 24/7</p>
+  <a href="tel:0501234567" class="hero-cta">📞 חייג עכשיו: 050-1234567</a>
 </header>
-
-<a href="tel:0501234567" class="cta">📞 חייג עכשיו: 050-1234567</a>
 
 <div class="form-container">
   <h2>בקשו הצעת מחיר חינם</h2>
@@ -116,6 +154,11 @@
   <p>✔️ אינסטלטור מורשה ומבוטח</p>
   <p>✔️ שירות חירום 24/7</p>
   <p>✔️ זמינות מהירה בכל תל אביב</p>
+</div>
+
+<div class="testimonials">
+  <div class="testimonial">"תיקנו לי את הצנרת תוך שעה. שירות מעולה!" – שרה ת., תל אביב</div>
+  <div class="testimonial">"אינסטלטור אמין ומקצועי, ממליץ בחום!" – דני ל., תל אביב</div>
 </div>
 
 <footer>
