@@ -126,26 +126,19 @@ form.addEventListener('submit', e => {
 
 // Step 2: Verify code and send lead
 verifyBtn.addEventListener('click', () => {
-  console.log("Verify button clicked");
-  console.log("Entered code:", smsCodeInput.value);
-  console.log("Generated code:", generatedCode);
-
   if(smsCodeInput.value === generatedCode){
-    console.log("Code correct, sending lead...");
     const data = {
       name: form.name.value,
       phone: form.phone.value,
       service: form.service.value
     };
-    console.log("Data to send:", data);
-
-    fetch("https://script.google.com/macros/s/AKfycbxwZ9eAwsxa_MxIz1Q_XSTUi-YzVWQA4ouAYcu13I6WK9V25JIvn-rR296D3QBf3AAs/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbw5zo78szDGEc3YbOMc19B5uQTnQqvATE7dYLKj8sfFNRjXFpLjqxi-oC-De4Zy9Uro/exec", {
       method: "POST",
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     })
     .then(res => res.json())
     .then(res => {
-      console.log("Response from script:", res);
       if(res.result === "success"){
         successMsg.style.display = "block";
         form.reset();
@@ -154,10 +147,11 @@ verifyBtn.addEventListener('click', () => {
         smsMsg.style.display = "none";
       }
     })
-    .catch(err => console.error("Fetch error:", err));
-
+    .catch(err => {
+      console.error("Fetch error:", err);
+      alert("שגיאה בשליחת הנתונים");
+    });
   } else {
-    console.log("Wrong code");
     smsMsg.style.display = "block";
   }
 });
