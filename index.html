@@ -78,6 +78,7 @@
     <button type="button" id="verifyBtn">אמת קוד</button>
   </div>
   <p id="smsMsg" style="text-align:center; color:red; display:none;">קוד שגוי, נסה שוב</p>
+
   <p id="successMsg" style="text-align:center; color:green; display:none;">תודה! הפנינו את פרטיך.</p>
   <p class="disclaimer">כל ליד הוא לקוח פוטנציאלי שפנה אלינו. אין אנו יכולים להבטיח שהוא ירכוש שירות, אך הוא מביע עניין אמיתי.</p>
 </section>
@@ -106,25 +107,21 @@ const observer = new IntersectionObserver(entries => {
 galleryImgs.forEach(img => observer.observe(img));
 
 // Lead form + SMS verification
-const form = document.getElementById('leadForm');
+const verifyBtn = document.getElementById('verifyBtn');
 const smsDiv = document.getElementById('smsVerification');
 const smsCodeInput = document.getElementById('smsCode');
-const verifyBtn = document.getElementById('verifyBtn');
 const smsMsg = document.getElementById('smsMsg');
 const successMsg = document.getElementById('successMsg');
-
 let generatedCode = "";
 
-// Step 1: Generate code when form submitted
+const form = document.getElementById('leadForm');
 form.addEventListener('submit', e => {
   e.preventDefault();
   generatedCode = Math.floor(1000 + Math.random() * 9000).toString();
   alert("קוד אימות נשלח לטלפון שלך: " + generatedCode); // Replace with real SMS API
   smsDiv.style.display = "block";
-  console.log("Generated SMS code:", generatedCode);
 });
 
-// Step 2: Verify code and send lead
 verifyBtn.addEventListener('click', () => {
   if(smsCodeInput.value === generatedCode){
     const data = {
@@ -132,9 +129,8 @@ verifyBtn.addEventListener('click', () => {
       phone: form.phone.value,
       service: form.service.value
     };
-    fetch("https://script.google.com/macros/s/AKfycbw5zo78szDGEc3YbOMc19B5uQTnQqvATE7dYLKj8sfFNRjXFpLjqxi-oC-De4Zy9Uro/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbxmapLv8rdcLukoDBFXX7J7A8ahL5uux-owA5sK5ptKu4jRqxdIJu6_VPreaYConoCS/exec", { // Replace with your Google Script URL
       method: "POST",
-      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     })
     .then(res => res.json())
@@ -146,11 +142,7 @@ verifyBtn.addEventListener('click', () => {
         smsCodeInput.value = "";
         smsMsg.style.display = "none";
       }
-    })
-    .catch(err => {
-      console.error("Fetch error:", err);
-      alert("שגיאה בשליחת הנתונים");
-    });
+    }).catch(err => alert("שגיאה בשליחת הנתונים"));
   } else {
     smsMsg.style.display = "block";
   }
