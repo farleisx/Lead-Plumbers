@@ -3,272 +3,290 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>אינסטלטור מקצועי</title>
-  <link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&display=swap" rel="stylesheet">
+  <title>אינסטלטור מקצועי – אינפינר</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    /* ==============================
-       Global Styles
-    ============================== */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Alef', sans-serif; background: #F5E6D3; color: #3B2F2F; line-height: 1.6; }
-    h1, h2, h3 { color: #7B3F00; }
-    a { text-decoration: none; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    /* -------------------- Global Styles -------------------- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Rubik', sans-serif;
+      background-color: #fdf7f0; /* light earthy background */
+      color: #3e2723; /* deep brown text */
+      line-height: 1.6;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+      border-radius: 8px;
+    }
+    section {
+      padding: 60px 20px;
+    }
+    h1, h2, h3, h4 {
+      color: #3e2723;
+    }
 
-    /* ==============================
-       Hero Section
-    ============================== */
+    /* -------------------- Hero Section -------------------- */
     .hero {
+      position: relative;
+      background: url('https://www.plumber-sos.co.il/wp-content/uploads/2021/04/%D7%90%D7%99%D7%A0%D7%A1%D7%98%D7%9C%D7%98%D7%95%D7%A8-%D7%91%D7%A2%D7%91%D7%95%D7%93%D7%94.jpg') center/cover no-repeat;
+      height: 90vh;
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #F5E6D3, #C9A66B);
-      padding: 60px 20px;
-      gap: 40px;
-      text-align: right;
-      border-radius: 15px;
+      text-align: center;
+      color: #fff;
     }
-    .hero-text { flex: 1 1 400px; }
-    .hero-text h1 { font-size: 2.8rem; margin-bottom: 20px; }
-    .hero-text p { font-size: 1.5rem; margin-bottom: 20px; }
-    .services-list { list-style: none; }
-    .services-list li {
-      position: relative;
-      padding-left: 25px;
-      margin-bottom: 10px;
-      font-weight: bold;
-      opacity: 0;
-      transform: translateX(30px);
-      transition: all 0.6s ease;
-    }
-    .services-list li::before {
-      content: "✔";
+    .hero::before {
+      content: "";
       position: absolute;
-      left: 0;
-      color: #C9A66B;
+      top:0; left:0; width:100%; height:100%;
+      background: rgba(62,39,35,0.6); /* dark overlay for contrast */
+      z-index: 1;
     }
-    .hero-list-visible { opacity: 1; transform: translateX(0); }
-    .hero-image { flex: 1 1 400px; display: flex; justify-content: center; }
-    .hero-image img { max-width: 100%; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
-
-    /* ==============================
-       Contact Form Section
-    ============================== */
-    .contact {
-      background: #fff8f0;
-      padding: 60px 20px;
-      text-align: right;
-      border-radius: 15px;
-      margin-top: 40px;
-    }
-    .contact h2 { font-size: 2rem; margin-bottom: 30px; text-align: center; }
-    .contact form {
-      max-width: 500px;
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
       margin: 0 auto;
+      padding: 0 20px;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    .hero h2 {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+    }
+    .hero button {
+      padding: 15px 35px;
+      font-size: 1.2rem;
+      background: linear-gradient(90deg, #d35400, #e67e22);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      color: #fff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hero button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+
+    /* -------------------- Services Section -------------------- */
+    .services {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 30px;
+    }
+    .service-card {
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 25px;
+      flex: 1 1 250px;
+      max-width: 300px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+    }
+    .service-card h4 {
+      margin: 15px 0 10px;
+    }
+    .service-card p {
+      font-size: 0.95rem;
+      color: #5d4037;
+    }
+
+    /* -------------------- Contact Form -------------------- */
+    .contact-form-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+    .contact-form-container h3 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    .contact-form-container form {
       display: flex;
       flex-direction: column;
       gap: 15px;
     }
-    .contact input, .contact select, .contact button {
+    .contact-form-container input,
+    .contact-form-container select {
       padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
       font-size: 1rem;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      width: 100%;
     }
-    .contact button {
-      background: #C9A66B;
-      color: #3B2F2F;
+    .contact-form-container button {
+      padding: 15px;
       border: none;
-      font-weight: bold;
+      border-radius: 50px;
+      background: linear-gradient(90deg, #d35400, #e67e22);
+      color: #fff;
+      font-size: 1.1rem;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .contact button:hover {
-      background: #7B3F00;
-      color: #F5E6D3;
+    .contact-form-container button:hover {
       transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
     }
 
-    /* ==============================
-       Image Gallery Section
-    ============================== */
+    /* -------------------- Lead Disclaimer -------------------- */
+    .lead-disclaimer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #5d4037; /* earthy brown */
+      margin-bottom: 20px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* -------------------- Gallery Section -------------------- */
     .gallery {
-      padding: 60px 20px;
-      text-align: right;
-      background: #F5E6D3;
-    }
-    .gallery h2 { font-size: 2rem; margin-bottom: 30px; text-align: center; }
-    .gallery-grid {
+      max-width: 1200px;
+      margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
     }
-    .gallery-grid img {
+    .gallery img {
       width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
     }
-    .gallery-grid img.fade-in {
+    .gallery img.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    .gallery-grid img:hover {
-      transform: scale(1.03);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-    }
 
-    /* ==============================
-       Sticky Contact Button on Mobile
-    ============================== */
-    .sticky-contact {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #C9A66B;
-      color: #3B2F2F;
-      padding: 15px 30px;
-      border-radius: 50px;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      z-index: 1000;
-      transition: all 0.3s ease;
-    }
-    .sticky-contact:hover { transform: translateX(-50%) scale(1.05); }
-
-    /* ==============================
-       Footer
-    ============================== */
+    /* -------------------- Footer -------------------- */
     footer {
-      background: #7B3F00;
-      color: #fff8f0;
+      background-color: #3e2723;
+      color: #fff;
       text-align: center;
-      padding: 30px 20px;
-      margin-top: 40px;
-      border-radius: 10px 10px 0 0;
+      padding: 25px 10px;
+      font-size: 0.9rem;
     }
 
-    /* ==============================
-       Responsive
-    ============================== */
-    @media (max-width: 768px) {
-      .hero { flex-direction: column; text-align: center; }
-      .hero-text h1 { font-size: 2rem; }
-      .hero-text p { font-size: 1.2rem; }
-      .contact h2 { font-size: 1.5rem; }
-      .sticky-contact { display: block; }
+    /* -------------------- Responsive -------------------- */
+    @media(max-width:768px){
+      .hero h1 { font-size: 2.2rem; }
+      .hero h2 { font-size: 1.2rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ==============================
-       Hero Section
-  ============================== -->
-  <section class="hero container">
-    <div class="hero-text">
-      <h1>אינסטלטור מקצועי:</h1>
-      <p>פותרים כל תקלה – בלי לשבור קירות!</p>
-      <ul class="services-list">
-        <li>תיקון נזילות</li>
-        <li>החלפת צנרת</li>
-        <li>פתיחת סתימות</li>
-        <li>שירותי חירום</li>
-      </ul>
-    </div>
-    <div class="hero-image">
-      <img src="https://via.placeholder.com/500x400?text=Plumber+Image" alt="Plumber">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>אינסטלטור מקצועי</h1>
+      <h2>פותרים כל תקלה – בלי לשבור קירות!</h2>
+      <button>התקשר עכשיו</button>
     </div>
   </section>
 
-  <!-- ==============================
-       Contact Form Section
-  ============================== -->
-  <section class="contact container">
-    <h2>השאירו פרטים, נחזור אליכם עם פתרון מהיר:</h2>
-    <form>
-      <input type="text" placeholder="שם מלא" required>
-      <input type="tel" placeholder="מספר טלפון" required>
-      <select required>
-        <option value="">בחר שירות</option>
-        <option>תיקון נזילה</option>
-        <option>החלפת צנרת</option>
-        <option>פתיחת סתימה</option>
-        <option>שירות חירום</option>
-      </select>
-      <button type="submit">שלח</button>
-    </form>
-  </section>
-
-  <!-- ==============================
-       Image Gallery Section
-  ============================== -->
-  <section class="gallery container">
-    <h2>גלריית תמונות</h2>
-    <div class="gallery-grid">
-      <img src="https://via.placeholder.com/400x300?text=Image1" alt="Gallery Image">
-      <img src="https://via.placeholder.com/400x300?text=Image2" alt="Gallery Image">
-      <img src="https://via.placeholder.com/400x300?text=Image3" alt="Gallery Image">
-      <img src="https://via.placeholder.com/400x300?text=Image4" alt="Gallery Image">
-      <img src="https://via.placeholder.com/400x300?text=Image5" alt="Gallery Image">
-      <img src="https://via.placeholder.com/400x300?text=Image6" alt="Gallery Image">
+  <!-- Services Section -->
+  <section>
+    <h3 style="text-align:center; margin-bottom:50px;">השירותים שלנו</h3>
+    <div class="services">
+      <div class="service-card">
+        <img src="https://images1.ynet.co.il/PicServer3/2013/12/03/5013904/4050004099185640360no.jpg" alt="תיקון נזילות">
+        <h4>תיקון נזילות</h4>
+        <p>תיקון נזילות מהירות בקירות, ריצוף ותקרה.</p>
+      </div>
+      <div class="service-card">
+        <img src="https://bathstar.co.il/wp-content/uploads/2020/12/%D7%91%D7%A8%D7%96-%D7%A9%D7%97%D7%95%D7%A8-%D7%9E%D7%98-%D7%9C%D7%9B%D7%99%D7%95%D7%A8-%D7%9E%D7%A0%D7%95%D7%97-1.jpg" alt="החלפת צנרת">
+        <h4>החלפת צנרת</h4>
+        <p>החלפת קווי מים וביוב ללא שבירת ריצוף.</p>
+      </div>
+      <div class="service-card">
+        <img src="https://images1.ynet.co.il/PicServer3/2013/12/03/5013904/4050004099185640360no.jpg" alt="פתיחת סתימות">
+        <h4>פתיחת סתימות</h4>
+        <p>פתיחת סתימות בלחץ מים גבוה, ספירלות חשמליות וציוד חדיש.</p>
+      </div>
     </div>
   </section>
 
-  <!-- ==============================
-       Sticky Contact Button (Mobile)
-  ============================== -->
-  <a href="tel:0501234567" class="sticky-contact">📞 חייג עכשיו</a>
+  <!-- Contact Form -->
+  <section>
+    <div class="contact-form-container">
+      <h3>השאירו פרטים, נחזור אליכם עם פתרון מהיר:</h3>
 
-  <!-- ==============================
-       Footer
-  ============================== -->
+      <!-- Lead Disclaimer -->
+      <p class="lead-disclaimer">
+        כל ליד הוא לקוח פוטנציאלי שפנה אלינו. אין אנו יכולים להבטיח שהוא ירכוש שירות, אך הוא מביע עניין אמיתי.
+      </p>
+
+      <form>
+        <input type="text" placeholder="שם מלא" required>
+        <input type="tel" placeholder="מספר טלפון" required>
+        <select required>
+          <option value="">בחר שירות</option>
+          <option value="pipe_replacement">החלפת צנרת</option>
+          <option value="leak_detection">איתור נזילות</option>
+          <option value="drain_unclogging">פתיחת סתימות</option>
+        </select>
+        <button type="submit">שלח</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section>
+    <h3 style="text-align:center; margin-bottom:50px;">גלריית תמונות</h3>
+    <div class="gallery">
+      <img src="https://images1.ynet.co.il/PicServer3/2013/12/03/5013904/4050004099185640360no.jpg" alt="Plumber">
+      <img src="https://bathstar.co.il/wp-content/uploads/2020/12/%D7%91%D7%A8%D7%96-%D7%A9%D7%97%D7%95%D7%A8-%D7%9E%D7%98-%D7%9C%D7%9B%D7%99%D7%95%D7%A8-%D7%9E%D7%A0%D7%95%D7%97-1.jpg" alt="Plumber">
+      <img src="https://www.plumber-sos.co.il/wp-content/uploads/2021/04/%D7%90%D7%99%D7%A0%D7%A1%D7%98%D7%9C%D7%98%D7%95%D7%A8-%D7%91%D7%A2%D7%91%D7%95%D7%93%D7%94.jpg" alt="Plumber">
+      <img src="https://images1.ynet.co.il/PicServer3/2013/12/03/5013904/4050004099185640360no.jpg" alt="Plumber">
+      <img src="https://bathstar.co.il/wp-content/uploads/2020/12/%D7%91%D7%A8%D7%96-%D7%A9%D7%97%D7%95%D7%A8-%D7%9E%D7%98-%D7%9C%D7%9B%D7%99%D7%95%D7%A8-%D7%9E%D7%A0%D7%95%D7%97-1.jpg" alt="Plumber">
+      <img src="https://www.plumber-sos.co.il/wp-content/uploads/2021/04/%D7%90%D7%99%D7%A0%D7%A1%D7%98%D7%9C%D7%98%D7%95%D7%A8-%D7%91%D7%A2%D7%91%D7%95%D7%93%D7%94.jpg" alt="Plumber">
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    <p>© 2025 כל הזכויות שמורות</p>
+    © 2025 אינפינר אינסטלציה | כל הזכויות שמורות
   </footer>
 
-  <!-- ==============================
-       JavaScript for Fade-In and Services Animation
-  ============================== -->
- <script>
-  // -------------------- Gallery fade-in --------------------
-  const galleryImages = document.querySelectorAll('.gallery-grid img');
-  const observerOptions = { root: null, rootMargin: '0px', threshold: 0.2 };
-  const observerCallback = (entries, observer) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('fade-in');
-        observer.unobserve(entry.target);
-      }
-    });
-  };
-  const observer = new IntersectionObserver(observerCallback, observerOptions);
-  galleryImages.forEach(img => observer.observe(img));
-
-  // -------------------- Animate services list --------------------
-  const services = document.querySelectorAll('.services-list li');
-  const servicesObserver = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('hero-list-visible');
-        obs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.2 });
-  services.forEach(li => servicesObserver.observe(li));
-
+  <!-- JS: Fade-in Gallery -->
+  <script>
+    const galleryImages = document.querySelectorAll('.gallery img');
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry =>
   // -------------------- Lead Form + SMS Verification --------------------
   const leadForm = document.querySelector('.contact-form-container form');
 
-  // Create SMS verification elements dynamically
+  // Create SMS verification elements dynamically (won't touch HTML)
   const smsDiv = document.createElement('div');
   smsDiv.style.display = 'none';
   smsDiv.style.textAlign = 'center';
@@ -342,7 +360,3 @@
     }
   });
 </script>
-
-
-</body>
-</html>
