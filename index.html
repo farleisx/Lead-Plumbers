@@ -1,278 +1,167 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>אינסטלטור מקצועי – אינפינר</title>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
-  <style>
-    /* -------------------- Global Styles -------------------- */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: 'Rubik', sans-serif;
-      background-color: #fdf7f0; /* light earthy background */
-      color: #3e2723; /* deep brown text */
-      line-height: 1.6;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-    img {
-      max-width: 100%;
-      display: block;
-      border-radius: 8px;
-    }
-    section {
-      padding: 60px 20px;
-    }
-    h1, h2, h3, h4 {
-      color: #3e2723;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>אינפינר - אינסטלטור מקצועי</title>
+<style>
+  /* General styles */
+  body { margin:0; font-family: Arial, sans-serif; background:#f5f0eb; color:#333; }
+  h1,h2,h3 { margin:0; }
+  .container { max-width:1200px; margin:auto; padding:20px; }
 
-    /* -------------------- Hero Section -------------------- */
-    .hero {
-      position: relative;
-      background: url('https://www.plumber-sos.co.il/wp-content/uploads/2021/04/%D7%90%D7%99%D7%A0%D7%A1%D7%98%D7%9C%D7%98%D7%95%D7%A8-%D7%91%D7%A2%D7%91%D7%95%D7%93%D7%94.jpg') center/cover no-repeat;
-      height: 90vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: #fff;
-    }
-    .hero::before {
-      content: "";
-      position: absolute;
-      top:0; left:0; width:100%; height:100%;
-      background: rgba(62,39,35,0.6); /* dark overlay for contrast */
-      z-index: 1;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-      line-height: 1.2;
-    }
-    .hero h2 {
-      font-size: 1.5rem;
-      margin-bottom: 30px;
-    }
-    .hero button {
-      padding: 15px 35px;
-      font-size: 1.2rem;
-      background: linear-gradient(90deg, #d35400, #e67e22);
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      color: #fff;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .hero button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-    }
+  /* Hero section */
+  .hero { background:#7f5a3c; color:white; text-align:center; padding:60px 20px; }
+  .hero h1 { font-size:2.5em; margin-bottom:20px; }
+  .hero p { font-size:1.2em; }
+  .hero img { max-width:100%; height:auto; margin-top:20px; border-radius:10px; }
 
-    /* -------------------- Services Section -------------------- */
-    .services {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      gap: 30px;
-    }
-    .service-card {
-      background-color: #fff;
-      border-radius: 15px;
-      padding: 25px;
-      flex: 1 1 250px;
-      max-width: 300px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      text-align: center;
-    }
-    .service-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 15px 25px rgba(0,0,0,0.2);
-    }
-    .service-card h4 {
-      margin: 15px 0 10px;
-    }
-    .service-card p {
-      font-size: 0.95rem;
-      color: #5d4037;
-    }
+  /* Services */
+  .services { display:flex; justify-content:center; gap:30px; margin-top:30px; flex-wrap:wrap; }
+  .service { display:flex; align-items:center; gap:10px; font-size:1.1em; }
 
-    /* -------------------- Contact Form -------------------- */
-    .contact-form-container {
-      max-width: 600px;
-      margin: 0 auto;
-      background: #fff;
-      padding: 40px 30px;
-      border-radius: 15px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-    }
-    .contact-form-container h3 {
-      text-align: center;
-      margin-bottom: 25px;
-    }
-    .contact-form-container form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-    .contact-form-container input,
-    .contact-form-container select {
-      padding: 15px;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      font-size: 1rem;
-    }
-    .contact-form-container button {
-      padding: 15px;
-      border: none;
-      border-radius: 50px;
-      background: linear-gradient(90deg, #d35400, #e67e22);
-      color: #fff;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .contact-form-container button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-    }
+  /* Form section */
+  .form-section { background:#e5dfd6; padding:40px 20px; margin-top:30px; border-radius:10px; text-align:center; }
+  .form-section form { display:flex; flex-direction:column; gap:15px; max-width:400px; margin:auto; }
+  input, select, button { padding:12px; font-size:1em; border-radius:5px; border:1px solid #ccc; }
+  button { background:#b33a1c; color:white; border:none; cursor:pointer; transition:0.3s; }
+  button:hover { background:#802818; }
 
-    /* -------------------- Gallery Section -------------------- */
-    .gallery {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-    }
-    .gallery img {
-      width: 100%;
-      border-radius: 15px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s ease;
-    }
-    .gallery img.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  /* SMS verification */
+  #smsVerification input { width:150px; display:inline-block; margin-right:10px; }
 
-    /* -------------------- Footer -------------------- */
-    footer {
-      background-color: #3e2723;
-      color: #fff;
-      text-align: center;
-      padding: 25px 10px;
-      font-size: 0.9rem;
-    }
+  /* Disclaimer */
+  .disclaimer { margin-top:20px; font-size:0.9em; text-align:center; color:#555; }
 
-    /* -------------------- Responsive -------------------- */
-    @media(max-width:768px){
-      .hero h1 { font-size: 2.2rem; }
-      .hero h2 { font-size: 1.2rem; }
-    }
-  </style>
+  /* Gallery */
+  .gallery { display:grid; gap:15px; margin-top:40px; }
+  .gallery img { width:100%; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.2); opacity:0; transform:translateY(20px); transition:0.5s ease; }
+  .fade-in { opacity:1 !important; transform:translateY(0) !important; }
+
+  /* Responsive */
+  @media(max-width:768px){ .services { flex-direction:column; align-items:center; } .gallery { grid-template-columns:1fr; } }
+  @media(min-width:769px){ .gallery { grid-template-columns:repeat(3,1fr); } }
+</style>
 </head>
 <body>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>אינסטלטור מקצועי</h1>
-      <h2>פותרים כל תקלה – בלי לשבור קירות!</h2>
-      <button>התקשר עכשיו</button>
-    </div>
-  </section>
+<!-- Hero Section -->
+<section class="hero">
+  <h1>אינסטלטור מקצועי:</h1>
+  <p>פותרים כל תקלה – בלי לשבור קירות!</p>
+  <img src="https://plus.unsplash.com/premium_photo-1664301972519-506636f0245d?w=400&auto=format&fit=crop&q=60" alt="Plumber">
+  <div class="services">
+    <div class="service">✔ תיקון נזילות</div>
+    <div class="service">✔ החלפת צנרת</div>
+    <div class="service">✔ פתיחת סתימות</div>
+  </div>
+</section>
 
-  <!-- Services Section -->
-  <section>
-    <h3 style="text-align:center; margin-bottom:50px;">השירותים שלנו</h3>
-    <div class="services">
-      <div class="service-card">
-        <img src="https://images1.ynet.co.il/PicServer3/2013/12/03/5013904/4050004099185640360no.jpg" alt="תיקון נזילות">
-        <h4>תיקון נזילות</h4>
-        <p>תיקון נזילות מהירות בקירות, ריצוף ותקרה.</p>
-      </div>
-      <div class="service-card">
-        <img src="https://bathstar.co.il/wp-content/uploads/2020/12/%D7%91%D7%A8%D7%96-%D7%A9%D7%97%D7%95%D7%A8-%D7%9E%D7%98-%D7%9C%D7%9B%D7%99%D7%95%D7%A8-%D7%9E%D7%A0%D7%95%D7%97-1.jpg" alt="החלפת צנרת">
-        <h4>החלפת צנרת</h4>
-        <p>החלפת קווי מים וביוב ללא שבירת ריצוף.</p>
-      </div>
-      <div class="service-card">
-        <img src="https://images1.ynet.co.il/PicServer3/2013/12/03/5013904/4050004099185640360no.jpg" alt="פתיחת סתימות">
-        <h4>פתיחת סתימות</h4>
-        <p>פתיחת סתימות בלחץ מים גבוה, ספירלות חשמליות וציוד חדיש.</p>
-      </div>
-    </div>
-  </section>
+<!-- Form Section -->
+<section class="form-section">
+  <h2>השאירו פרטים, נחזור אליכם עם פתרון מהיר:</h2>
+  <form id="leadForm">
+    <input type="text" name="name" placeholder="שם מלא" required>
+    <input type="tel" name="phone" placeholder="מספר טלפון" required>
+    <select name="service" required>
+      <option value="">בחר שירות</option>
+      <option value="pipe_replacement">החלפת צנרת</option>
+      <option value="leak_detection">איתור נזילות</option>
+      <option value="drain_unclogging">פתיחת סתימות</option>
+    </select>
+    <button type="submit">שלח</button>
+  </form>
 
-  <!-- Contact Form -->
-  <section>
-    <div class="contact-form-container">
-      <h3>השאירו פרטים, נחזור אליכם עם פתרון מהיר:</h3>
-      <form>
-        <input type="text" placeholder="שם מלא" required>
-        <input type="tel" placeholder="מספר טלפון" required>
-        <select required>
-          <option value="">בחר שירות</option>
-          <option value="pipe_replacement">החלפת צנרת</option>
-          <option value="leak_detection">איתור נזילות</option>
-          <option value="drain_unclogging">פתיחת סתימות</option>
-        </select>
-        <button type="submit">שלח</button>
-      </form>
-    </div>
-  </section>
+  <!-- SMS verification -->
+  <div id="smsVerification" style="display:none; text-align:center; margin-top:10px;">
+    <input type="text" id="smsCode" placeholder="הכנס את הקוד שנשלח ל-טלפון שלך">
+    <button type="button" id="verifyBtn">אמת קוד</button>
+  </div>
+  <p id="smsMsg" style="text-align:center; color:red; display:none;">קוד שגוי, נסה שוב</p>
+  <p id="successMsg" style="text-align:center; color:green; display:none;">תודה! הפנינו את פרטיך.</p>
+  <p class="disclaimer">כל ליד הוא לקוח פוטנציאלי שפנה אלינו. אין אנו יכולים להבטיח שהוא ירכוש שירות, אך הוא מביע עניין אמיתי.</p>
+</section>
 
-  <!-- Gallery Section -->
-  <section>
-    <h3 style="text-align:center; margin-bottom:50px;">גלריית תמונות</h3>
-    <div class="gallery">
-      <img src="https://images1.ynet.co.il/PicServer3/2013/12/03/5013904/4050004099185640360no.jpg" alt="Plumber">
-      <img src="https://bathstar.co.il/wp-content/uploads/2020/12/%D7%91%D7%A8%D7%96-%D7%A9%D7%97%D7%95%D7%A8-%D7%9E%D7%98-%D7%9C%D7%9B%D7%99%D7%95%D7%A8-%D7%9E%D7%A0%D7%95%D7%97-1.jpg" alt="Plumber">
-      <img src="https://www.plumber-sos.co.il/wp-content/uploads/2021/04/%D7%90%D7%99%D7%A0%D7%A1%D7%98%D7%9C%D7%98%D7%95%D7%A8-%D7%91%D7%A2%D7%91%D7%95%D7%93%D7%94.jpg" alt="Plumber">
-      <img src="https://images1.ynet.co.il/PicServer3/2013/12/03/5013904/4050004099185640360no.jpg" alt="Plumber">
-      <img src="https://bathstar.co.il/wp-content/uploads/2020/12/%D7%91%D7%A8%D7%96-%D7%A9%D7%97%D7%95%D7%A8-%D7%9E%D7%98-%D7%9C%D7%9B%D7%99%D7%95%D7%A8-%D7%9E%D7%A0%D7%95%D7%97-1.jpg" alt="Plumber">
-      <img src="https://www.plumber-sos.co.il/wp-content/uploads/2021/04/%D7%90%D7%99%D7%A0%D7%A1%D7%98%D7%9C%D7%98%D7%95%D7%A8-%D7%91%D7%A2%D7%91%D7%95%D7%93%D7%94.jpg" alt="Plumber">
-    </div>
-  </section>
+<!-- Gallery -->
+<section class="container">
+  <h2 style="text-align:center;">גלריית תמונות</h2>
+  <div class="gallery">
+    <img src="https://plus.unsplash.com/premium_photo-1664301972519-506636f0245d?w=400&auto=format&fit=crop&q=60" alt="Plumber">
+    <img src="https://www.plumber-sos.co.il/wp-content/uploads/2021/04/%D7%90%D7%99%D7%A0%D7%A1%D7%98%D7%9C%D7%98%D7%95%D7%A8-%D7%91%D7%A2%D7%91%D7%95%D7%93%D7%94.jpg" alt="Plumber working">
+    <img src="https://images1.ynet.co.il/PicServer3/2013/12/03/5013904/4050004099185640360no.jpg" alt="Plumbing work">
+    <img src="https://bathstar.co.il/wp-content/uploads/2020/12/%D7%91%D7%A8%D7%96-%D7%A9%D7%97%D7%95%D7%A8-%D7%9E%D7%98-%D7%9C%D7%9B%D7%99%D7%95%D7%A8-%D7%9E%D7%A0%D7%95%D7%97-1.jpg" alt="Pipe replacement">
+    <img src="https://plus.unsplash.com/premium_photo-1664301972519-506636f0245d?w=400&auto=format&fit=crop&q=60" alt="Plumber">
+    <img src="https://plus.unsplash.com/premium_photo-1664301972519-506636f0245d?w=400&auto=format&fit=crop&q=60" alt="Plumber">
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    © 2025 אינפינר אינסטלציה | כל הזכויות שמורות
-  </footer>
+<script>
+// Fade-in effect for gallery
+const galleryImgs = document.querySelectorAll('.gallery img');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) entry.target.classList.add('fade-in');
+  });
+},{ threshold: 0.2 });
+galleryImgs.forEach(img => observer.observe(img));
 
-  <!-- JS: Fade-in Gallery -->
-  <script>
-    const galleryImages = document.querySelectorAll('.gallery img');
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('visible');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, {threshold:0.5});
-    galleryImages.forEach(img => observer.observe(img));
-  </script>
+// Lead form + SMS verification
+const form = document.getElementById('leadForm');
+const smsDiv = document.getElementById('smsVerification');
+const smsCodeInput = document.getElementById('smsCode');
+const verifyBtn = document.getElementById('verifyBtn');
+const smsMsg = document.getElementById('smsMsg');
+const successMsg = document.getElementById('successMsg');
+
+let generatedCode = "";
+
+// Step 1: Generate code when form submitted
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  generatedCode = Math.floor(1000 + Math.random() * 9000).toString();
+  alert("קוד אימות נשלח לטלפון שלך: " + generatedCode); // Replace with real SMS API
+  smsDiv.style.display = "block";
+  console.log("Generated SMS code:", generatedCode);
+});
+
+// Step 2: Verify code and send lead
+verifyBtn.addEventListener('click', () => {
+  console.log("Verify button clicked");
+  console.log("Entered code:", smsCodeInput.value);
+  console.log("Generated code:", generatedCode);
+
+  if(smsCodeInput.value === generatedCode){
+    console.log("Code correct, sending lead...");
+    const data = {
+      name: form.name.value,
+      phone: form.phone.value,
+      service: form.service.value
+    };
+    console.log("Data to send:", data);
+
+    fetch("https://script.google.com/macros/s/AKfycbxwZ9eAwsxa_MxIz1Q_XSTUi-YzVWQA4ouAYcu13I6WK9V25JIvn-rR296D3QBf3AAs/exec", {
+      method: "POST",
+      body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(res => {
+      console.log("Response from script:", res);
+      if(res.result === "success"){
+        successMsg.style.display = "block";
+        form.reset();
+        smsDiv.style.display = "none";
+        smsCodeInput.value = "";
+        smsMsg.style.display = "none";
+      }
+    })
+    .catch(err => console.error("Fetch error:", err));
+
+  } else {
+    console.log("Wrong code");
+    smsMsg.style.display = "block";
+  }
+});
+</script>
+
 </body>
 </html>
