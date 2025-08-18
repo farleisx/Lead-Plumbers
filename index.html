@@ -283,3 +283,81 @@
     const galleryImages = document.querySelectorAll('.gallery img');
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry =>
+  // -------------------- Lead Form + SMS Verification --------------------
+  const leadForm = document.querySelector('.contact-form-container form');
+
+  // Create SMS verification elements dynamically (won't touch HTML)
+  const smsDiv = document.createElement('div');
+  smsDiv.style.display = 'none';
+  smsDiv.style.textAlign = 'center';
+  smsDiv.style.marginTop = '10px';
+
+  const smsInput = document.createElement('input');
+  smsInput.type = 'text';
+  smsInput.placeholder = 'הכנס את הקוד שנשלח ל-טלפון שלך';
+  smsInput.style.width = '150px';
+  smsInput.style.marginRight = '10px';
+
+  const smsButton = document.createElement('button');
+  smsButton.type = 'button';
+  smsButton.textContent = 'אמת קוד';
+
+  const smsMsg = document.createElement('p');
+  smsMsg.style.textAlign = 'center';
+  smsMsg.style.color = 'red';
+  smsMsg.style.display = 'none';
+  smsMsg.textContent = 'קוד שגוי, נסה שוב';
+
+  const successMsg = document.createElement('p');
+  successMsg.style.textAlign = 'center';
+  successMsg.style.color = 'green';
+  successMsg.style.display = 'none';
+  successMsg.textContent = 'תודה! הפנינו את פרטיך.';
+
+  smsDiv.appendChild(smsInput);
+  smsDiv.appendChild(smsButton);
+  leadForm.parentNode.insertBefore(smsDiv, leadForm.nextSibling);
+  leadForm.parentNode.insertBefore(smsMsg, smsDiv.nextSibling);
+  leadForm.parentNode.insertBefore(successMsg, smsMsg.nextSibling);
+
+  let generatedCode = '';
+
+  leadForm.addEventListener('submit', e => {
+    e.preventDefault();
+    // Generate 4-digit code
+    generatedCode = Math.floor(1000 + Math.random() * 9000).toString();
+    alert('קוד אימות נשלח לטלפון שלך: ' + generatedCode); // Replace with real SMS API
+    smsDiv.style.display = 'block';
+  });
+
+  smsButton.addEventListener('click', () => {
+    if (smsInput.value === generatedCode) {
+      const data = {
+        name: leadForm.querySelector('input[type="text"]').value,
+        phone: leadForm.querySelector('input[type="tel"]').value,
+        service: leadForm.querySelector('select').value
+      };
+
+      fetch('https://script.google.com/macros/s/AKfycbw5zo78szDGEc3YbOMc19B5uQTnQqvATE7dYLKj8sfFNRjXFpLjqxi-oC-De4Zy9Uro/exec', {
+        method: 'POST',
+        body: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(res => {
+        if (res.result === 'success') {
+          successMsg.style.display = 'block';
+          leadForm.reset();
+          smsDiv.style.display = 'none';
+          smsInput.value = '';
+          smsMsg.style.display = 'none';
+        } else {
+          alert('שגיאה בשליחת הנתונים');
+        }
+      })
+      .catch(err => alert('שגיאה בשליחת הנתונים'));
+    } else {
+      smsMsg.style.display = 'block';
+    }
+  });
+</script>
+
