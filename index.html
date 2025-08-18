@@ -168,5 +168,30 @@
     }, {threshold:0.5});
     galleryImages.forEach(img => observer.observe(img));
   </script>
+  <script>
+  document.getElementById('leadForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const formData = {
+      name: this.name.value,
+      phone: this.phone.value,
+      message: this.message.value
+    };
+
+    fetch("https://script.google.com/macros/s/AKfycbz8dSddGBFa6sEJSSObysgyT0LP3ukhe41OWVutNhrxdUmdmXiJumhuRjP3e3HyUeOt/exec", {
+      method: "POST",
+      body: JSON.stringify(formData)
+    })
+    .then(res => res.text())
+    .then(data => {
+      alert("Thanks! We'll contact you soon.");
+      this.reset();
+    })
+    .catch(err => {
+      alert("Error, please try again later.");
+      console.error(err);
+    });
+  });
+</script
 </body>
 </html>
