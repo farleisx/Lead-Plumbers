@@ -166,7 +166,7 @@
 
   <!-- Top Bar -->
   <div class="top-bar">
-    <button>12345678</button>
+  <button onclick="window.location.href='tel:12345678'">📞 12345678</button>
     <span>שירות 24/5 התקשרו לקבלת אבחון מדוייק</span>
   </div>
 
@@ -252,23 +252,24 @@
 
   <!-- JS: Google Sheets Form Submission -->
   <script>
-    document.getElementById('leadForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const formData = new FormData(this);
-      fetch("https://script.google.com/macros/s/AKfycbz8dSddGBFa6sEJSSObysgyT0LP3ukhe41OWVutNhrxdUmdmXiJumhuRjP3e3HyUeOt/exec", {
-        method: "POST",
-        body: formData
-      })
-      .then(res => res.text())
-      .then(data => {
-        alert("תודה! נחזור אליכם בהקדם.");
-        this.reset();
-      })
-      .catch(err => {
-        alert("שגיאה, נסה שוב מאוחר יותר.");
-        console.error(err);
-      });
-    });
+ document.getElementById('leadForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const formData = new FormData(this);
+
+  fetch("https://script.google.com/macros/s/AKfycbz8dSddGBFa6sEJSSObysgyT0LP3ukhe41OWVutNhrxdUmdmXiJumhuRjP3e3HyUeOt/exec", {
+    method: "POST",
+    body: formData,
+    mode: "no-cors"
+  })
+  .then(() => {
+    alert("תודה! נחזור אליכם בהקדם.");
+    this.reset();
+  })
+  .catch(err => {
+    alert("שגיאה, נסה שוב מאוחר יותר.");
+    console.error(err);
+  });
+});
   </script>
 
 </body>
