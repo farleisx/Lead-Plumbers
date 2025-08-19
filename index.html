@@ -15,158 +15,52 @@
     h1, h2, h3, h4 { color: #3e2723; }
 
     /* -------------------- Top Bar -------------------- */
-    .top-bar {
-      background: #fff3f3;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 25px;
-      border-bottom: 2px solid #e0e0e0;
-    }
-    .top-bar button {
-      background: #c62828;
-      color: #fff;
-      border: none;
-      padding: 12px 25px;
-      font-size: 1rem;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
+    .top-bar { background: #fff3f3; display: flex; justify-content: space-between; align-items: center; padding: 15px 25px; border-bottom: 2px solid #e0e0e0; }
+    .top-bar button { background: #c62828; color: #fff; border: none; padding: 12px 25px; font-size: 1rem; border-radius: 6px; cursor: pointer; transition: background 0.3s ease; }
     .top-bar button:hover { background: #b71c1c; }
-    .top-bar span {
-      font-size: 1rem;
-      font-weight: 500;
-      color: #3e2723;
-    }
+    .top-bar span { font-size: 1rem; font-weight: 500; color: #3e2723; }
 
     /* -------------------- Hero Section -------------------- */
-    .hero {
-      position: relative;
-      background: url('https://www.plumber-sos.co.il/wp-content/uploads/2021/04/%D7%90%D7%99%D7%A0%D7%A1%D7%98%D7%9C%D7%98%D7%95%D7%A8-%D7%91%D7%A2%D7%91%D7%95%D7%93%D7%94.jpg') center/cover no-repeat;
-      height: 90vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: #fff;
-    }
-    .hero::before {
-      content: "";
-      position: absolute;
-      top:0; left:0;
-      width:100%; height:100%;
-      background: rgba(62,39,35,0.6);
-      z-index: 1;
-    }
+    .hero { position: relative; background: url('https://www.plumber-sos.co.il/wp-content/uploads/2021/04/%D7%90%D7%99%D7%A0%D7%A1%D7%98%D7%9C%D7%98%D7%95%D7%A8-%D7%91%D7%A2%D7%91%D7%95%D7%93%D7%94.jpg') center/cover no-repeat; height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: #fff; }
+    .hero::before { content: ""; position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(62,39,35,0.6); z-index: 1; }
     .hero-content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; padding: 0 20px; }
     .hero h1 { font-size: 3rem; margin-bottom: 20px; line-height: 1.2; }
     .hero h2 { font-size: 1.5rem; margin-bottom: 30px; }
-    .hero button {
-      padding: 15px 35px;
-      font-size: 1.2rem;
-      background: linear-gradient(90deg, #d35400, #e67e22);
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      color: #fff;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+    .hero button { padding: 15px 35px; font-size: 1.2rem; background: linear-gradient(90deg, #d35400, #e67e22); border: none; border-radius: 50px; cursor: pointer; color: #fff; transition: transform 0.3s ease, box-shadow 0.3s ease; }
     .hero button:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
 
     /* -------------------- Services Section -------------------- */
-    .services {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      gap: 30px;
-    }
-    .service-card {
-      background-color: #fff;
-      border-radius: 15px;
-      padding: 25px;
-      flex: 1 1 250px;
-      max-width: 300px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      text-align: center;
-    }
+    .services { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-around; gap: 30px; }
+    .service-card { background-color: #fff; border-radius: 15px; padding: 25px; flex: 1 1 250px; max-width: 300px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; text-align: center; }
     .service-card:hover { transform: translateY(-8px); box-shadow: 0 15px 25px rgba(0,0,0,0.2); }
     .service-card h4 { margin: 15px 0 10px; }
     .service-card p { font-size: 0.95rem; color: #5d4037; }
 
     /* -------------------- Contact Form -------------------- */
-    .contact-form-container {
-      max-width: 600px;
-      margin: 0 auto;
-      background: #fff;
-      padding: 40px 30px;
-      border-radius: 15px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-    }
+    .contact-form-container { max-width: 600px; margin: 0 auto; background: #fff; padding: 40px 30px; border-radius: 15px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
     .contact-form-container h3 { text-align: center; margin-bottom: 25px; }
     .contact-form-container form { display: flex; flex-direction: column; gap: 15px; }
-    .contact-form-container input, .contact-form-container select {
-      padding: 15px;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      font-size: 1rem;
-    }
-    .contact-form-container button {
-      padding: 15px;
-      border: none;
-      border-radius: 50px;
-      background: linear-gradient(90deg, #d35400, #e67e22);
-      color: #fff;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+    .contact-form-container input, .contact-form-container select { padding: 15px; border-radius: 8px; border: 1px solid #ddd; font-size: 1rem; }
+    .contact-form-container button { padding: 15px; border: none; border-radius: 50px; background: linear-gradient(90deg, #d35400, #e67e22); color: #fff; font-size: 1.1rem; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
     .contact-form-container button:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
 
     /* -------------------- Gallery Section -------------------- */
-    .gallery {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-    }
-    .gallery img {
-      width: 100%;
-      border-radius: 15px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s ease;
-    }
+    .gallery { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+    .gallery img { width: 100%; border-radius: 15px; box-shadow: 0 6px 15px rgba(0,0,0,0.1); opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
     .gallery img.visible { opacity: 1; transform: translateY(0); }
 
     /* -------------------- Footer -------------------- */
-    footer {
-      background-color: #3e2723;
-      color: #fff;
-      text-align: center;
-      padding: 25px 10px;
-      font-size: 0.9rem;
-    }
+    footer { background-color: #3e2723; color: #fff; text-align: center; padding: 25px 10px; font-size: 0.9rem; }
 
     /* -------------------- Responsive -------------------- */
-    @media(max-width:768px){
-      .hero h1 { font-size: 2.2rem; }
-      .hero h2 { font-size: 1.2rem; }
-      .top-bar { flex-direction: column; gap: 10px; text-align: center; }
-    }
+    @media(max-width:768px){ .hero h1 { font-size: 2.2rem; } .hero h2 { font-size: 1.2rem; } .top-bar { flex-direction: column; gap: 10px; text-align: center; } }
   </style>
 </head>
 <body>
 
   <!-- Top Bar -->
   <div class="top-bar">
-  <button onclick="window.location.href='tel:12345678'">📞 12345678</button>
+    <button onclick="window.location.href='tel:12345678'">📞 12345678</button>
     <span>שירות 24/5 התקשרו לקבלת אבחון מדוייק</span>
   </div>
 
@@ -205,7 +99,8 @@
   <section>
     <div class="contact-form-container">
       <h3>השאירו פרטים, נחזור אליכם עם פתרון מהיר:</h3>
-      <form id="leadForm">
+      <!-- ✅ Form now submits directly -->
+      <form id="leadForm" method="POST" action="YOUR_WEB_APP_URL">
         <input type="text" name="name" placeholder="שם מלא" required>
         <input type="tel" name="phone" placeholder="מספר טלפון" required>
         <select name="service" required>
@@ -248,28 +143,6 @@
       });
     }, {threshold:0.5});
     galleryImages.forEach(img => observer.observe(img));
-  </script>
-
-  <!-- JS: Google Sheets Form Submission -->
-  <script>
- document.getElementById('leadForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const formData = new FormData(this);
-
-  fetch("https://script.google.com/macros/s/AKfycbz8dSddGBFa6sEJSSObysgyT0LP3ukhe41OWVutNhrxdUmdmXiJumhuRjP3e3HyUeOt/exec", {
-    method: "POST",
-    body: formData,
-    mode: "no-cors"
-  })
-  .then(() => {
-    alert("תודה! נחזור אליכם בהקדם.");
-    this.reset();
-  })
-  .catch(err => {
-    alert("שגיאה, נסה שוב מאוחר יותר.");
-    console.error(err);
-  });
-});
   </script>
 
 </body>
