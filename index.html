@@ -69,7 +69,7 @@
     <div class="hero-content">
       <h1>אינסטלטור מקצועי</h1>
       <h2>פותרים כל תקלה – בלי לשבור קירות!</h2>
-      <button>התקשר עכשיו</button>
+      <button onclick="callAndScroll()">התקשר עכשיו</button>
     </div>
   </section>
 
@@ -99,7 +99,6 @@
   <section>
     <div class="contact-form-container">
       <h3>השאירו פרטים, נחזור אליכם עם פתרון מהיר:</h3>
-      <!-- ✅ Form now submits directly -->
       <form id="leadForm" method="POST" action="https://script.google.com/macros/s/AKfycbyw0klChBQEH2riFRwv5f_YrY5TI0QqhS5kq8yWGheU59LgGRXQDIKGcrrVH8QeMUEAuA/exec">
         <input type="text" name="name" placeholder="שם מלא" required>
         <input type="tel" name="phone" placeholder="מספר טלפון" required>
@@ -131,8 +130,9 @@
     © 2025 אינפינר אינסטלציה | כל הזכויות שמורות
   </footer>
 
-  <!-- JS: Fade-in Gallery -->
+  <!-- JS: Fade-in Gallery + Hero Button -->
   <script>
+    // Gallery fade-in
     const galleryImages = document.querySelectorAll('.gallery img');
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
@@ -143,6 +143,14 @@
       });
     }, {threshold:0.5});
     galleryImages.forEach(img => observer.observe(img));
+
+    // Hero button: call + scroll
+    function callAndScroll() {
+        window.location.href = 'tel:0556866864';
+        setTimeout(() => {
+            document.getElementById('leadForm').scrollIntoView({ behavior: 'smooth' });
+        }, 500);
+    }
   </script>
 
 </body>
